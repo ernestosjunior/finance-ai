@@ -11,12 +11,19 @@ const TransactionsPage = async () => {
     <main className="container space-y-6">
       <div className="flex w-full items-center justify-between pt-6">
         <h1 className="text-2xl font-bold">Transações</h1>
-        <Button className="rounded-full">
+        <Button className="rounded-full font-bold">
           Adicionar transação
           <ArrowDownUpIcon />
         </Button>
       </div>
-      <DataTable columns={transactionColumns} data={transactions} />
+      <DataTable
+        columns={transactionColumns}
+        data={transactions.map((transaction) => ({
+          ...transaction,
+          amount: Number(transaction.amount),
+          date: transaction.date.toString(),
+        }))}
+      />
     </main>
   );
 };
