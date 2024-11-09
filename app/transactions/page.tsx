@@ -14,11 +14,7 @@ const TransactionsPage = async () => {
       </div>
       <DataTable
         columns={transactionColumns}
-        data={transactions.map((transaction) => ({
-          ...transaction,
-          amount: Number(transaction.amount),
-          date: transaction.date.toString(),
-        }))}
+        data={JSON.parse(JSON.stringify(transactions))}
       />
     </main>
   );
