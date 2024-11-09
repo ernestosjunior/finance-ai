@@ -1,10 +1,9 @@
 import { Badge } from "@/app/_components/ui/badge";
-import { TransactionType } from "@prisma/client";
+import { Transaction, TransactionType } from "@prisma/client";
 import { CircleIcon } from "lucide-react";
-import { ColumnTransactionType } from "../_columns";
 
 interface TransactionTypeBadgeProps {
-  transaction: ColumnTransactionType;
+  transaction: Transaction;
 }
 
 const TransactionTypeBadge = ({ transaction }: TransactionTypeBadgeProps) => {
