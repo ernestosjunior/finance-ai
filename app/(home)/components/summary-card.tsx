@@ -31,13 +31,20 @@ const SummaryCard = ({
 
   return (
     <Card className={translucid ? "bg-[#161716]" : ""}>
-      <CardHeader className="flex-row items-center gap-4">
-        <div
-          className={`flex items-center justify-center rounded-[8.5px] bg-[${iconBg}] p-[10px]`}
-        >
-          {icon}
+      <CardHeader className="flex-row items-center justify-between">
+        <div className="flex items-center gap-4">
+          <div
+            className={`flex items-center justify-center rounded-[8.5px] bg-[${iconBg}] p-[10px]`}
+          >
+            {icon}
+          </div>
+          <p className={titleClass[size]}>{title}</p>
         </div>
-        <p className={titleClass[size]}>{title}</p>
+        {size === "lg" && (
+          <span className="sm:hidden">
+            <AddTransactionButton />
+          </span>
+        )}
       </CardHeader>
       <CardContent className="flex justify-between">
         <p className={`font-bold ${amountClass[size]}`}>
@@ -47,7 +54,11 @@ const SummaryCard = ({
             maximumFractionDigits: 2,
           }).format(amount)}
         </p>
-        {size === "lg" && <AddTransactionButton />}
+        {size === "lg" && (
+          <span className="hidden sm:block">
+            <AddTransactionButton />
+          </span>
+        )}
       </CardContent>
     </Card>
   );

@@ -13,7 +13,7 @@ const TransactionsPage = async () => {
   const transactions = await db.transaction.findMany({ where: { userId } });
 
   return (
-    <main className="container space-y-6 sm:px-0">
+    <main className="container space-y-6 sm:px-4">
       <div className="flex w-full items-center justify-between pt-6">
         <h1 className="text-2xl font-bold">Transações</h1>
         <AddTransactionButton />
