@@ -37,15 +37,31 @@ const HomePage = async ({ searchParams: { month } }: HomePageProps) => {
       </div>
       <div className="grid grid-cols-1 gap-6 overflow-hidden xl:grid-cols-[2fr,1fr]">
         <div className="flex flex-col gap-6">
-          <SummaryCards {...dashboard} />
+          <SummaryCards
+            balance={dashboard.balance}
+            depositsTotal={dashboard.depositsTotal}
+            expensesTotal={dashboard.expensesTotal}
+            investmentsTotal={dashboard.investmentsTotal}
+          />
           <div className="grid grid-cols-1 grid-rows-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <TransactionsPieChart {...dashboard} />
+            <TransactionsPieChart
+              depositsTotal={dashboard.depositsTotal}
+              expensesTotal={dashboard.expensesTotal}
+              investmentsTotal={dashboard.investmentsTotal}
+              typesPercentage={dashboard.typesPercentage}
+            />
             <ExpensesPerCategory
-              expensesPerCategory={dashboard.totalExpensePerCategory}
+              expensesPerCategory={JSON.parse(
+                JSON.stringify(dashboard.totalExpensePerCategory),
+              )}
             />
           </div>
         </div>
-        <LastTransactions lastTransactions={dashboard.lastTransactions} />
+        <LastTransactions
+          lastTransactions={JSON.parse(
+            JSON.stringify(dashboard.lastTransactions),
+          )}
+        />
       </div>
     </main>
   );
