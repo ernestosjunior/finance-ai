@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <header className="w-full border-b border-solid border-[#FFFFFF14]">
-      <div className="container flex h-[72px] w-full items-center justify-between py-4">
+      <div className="container flex h-[72px] w-full items-center justify-between py-4 sm:px-0">
         <div className="flex items-center gap-10">
           <Link href="/">
             <Image src="/logo.svg" alt="Finance AI" width={133} height={39} />

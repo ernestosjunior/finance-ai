@@ -4,9 +4,11 @@ import { ReactNode } from "react";
 
 interface SummaryCardProps {
   icon: ReactNode;
+  iconBg?: string;
   title: string;
   amount: number;
   size?: "sm" | "lg";
+  translucid?: boolean;
 }
 
 const SummaryCard = ({
@@ -14,6 +16,8 @@ const SummaryCard = ({
   icon,
   amount,
   size = "sm",
+  iconBg = "#0F0E11",
+  translucid = false,
 }: SummaryCardProps) => {
   const titleClass = {
     sm: "text-muted-foreground",
@@ -26,9 +30,13 @@ const SummaryCard = ({
   };
 
   return (
-    <Card>
+    <Card className={translucid ? "bg-[#161716]" : ""}>
       <CardHeader className="flex-row items-center gap-4">
-        {icon}
+        <div
+          className={`flex items-center justify-center rounded-[8.5px] bg-[${iconBg}] p-[10px]`}
+        >
+          {icon}
+        </div>
         <p className={titleClass[size]}>{title}</p>
       </CardHeader>
       <CardContent className="flex justify-between">
