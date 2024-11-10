@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import Header from "./_components/header";
+import AppProgressBar from "./_components/app-progress-bar";
 
 const mulish = Mulish({
   subsets: ["latin-ext"],
@@ -27,6 +28,7 @@ export default function RootLayout({
     >
       <html lang="pt-br">
         <body className={`${mulish.className} dark antialiased`}>
+          <AppProgressBar />
           <Header />
           {children}
         </body>

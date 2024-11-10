@@ -12,6 +12,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "./ui/navigation-menu";
+import { MenuIcon } from "lucide-react";
 
 const nav = [
   { path: "/", label: "Dashboard" },
@@ -29,7 +30,7 @@ const Header = () => {
   return (
     <header className="w-full border-b border-solid border-[#FFFFFF14]">
       <div className="container flex h-[72px] w-full items-center justify-between py-4 sm:px-4">
-        <div className="flex items-center gap-10">
+        <div className="flex items-center gap-4 sm:gap-10">
           <Link href="/">
             <Image src="/logo.svg" alt="Finance AI" width={133} height={39} />
           </Link>
@@ -51,7 +52,9 @@ const Header = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Menu</NavigationMenuTrigger>
+                  <NavigationMenuTrigger>
+                    <MenuIcon />
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent className="flex flex-col gap-10 p-8">
                     {React.Children.toArray(
                       nav.map((link) => (
