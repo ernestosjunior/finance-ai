@@ -59,7 +59,9 @@ const config: Config = {
       },
       container: {
         center: true,
-        padding: "1.5rem",
+        padding: {
+          sm: "1.5rem",
+        },
       },
     },
   },

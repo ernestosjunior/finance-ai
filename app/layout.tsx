@@ -3,6 +3,7 @@ import { Mulish } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import Header from "./_components/header";
 
 const mulish = Mulish({
   subsets: ["latin-ext"],
@@ -26,6 +27,7 @@ export default function RootLayout({
     >
       <html lang="pt-br">
         <body className={`${mulish.className} dark antialiased`}>
+          <Header />
           {children}
         </body>
       </html>
