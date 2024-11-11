@@ -7,6 +7,7 @@ import { getDashboard } from "../_data/get-dashboard";
 import TransactionsPieChart from "./_components/transactions-pie-chart";
 import ExpensesPerCategory from "./_components/expenses-per-category";
 import LastTransactions from "./_components/last-transactions";
+import { canUserAddTransaction } from "../_data/can-user-add-transaction";
 
 interface HomePageProps {
   searchParams: {
@@ -29,6 +30,8 @@ const HomePage = async ({ searchParams: { month } }: HomePageProps) => {
 
   const dashboard = await getDashboard(month);
 
+  const userCanAddTransaction = await canUserAddTransaction();
+
   return (
     <main className="container space-y-6 py-6 sm:px-4">
       <div className="flex items-center justify-between">
@@ -42,6 +45,7 @@ const HomePage = async ({ searchParams: { month } }: HomePageProps) => {
             depositsTotal={dashboard.depositsTotal}
             expensesTotal={dashboard.expensesTotal}
             investmentsTotal={dashboard.investmentsTotal}
+            userCanAddTransaction={userCanAddTransaction}
           />
           <div className="grid grid-cols-1 grid-rows-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             <TransactionsPieChart

@@ -4,6 +4,7 @@ import { transactionColumns } from "./_columns";
 import AddTransactionButton from "../_components/add-transaction-button";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import { canUserAddTransaction } from "../_data/can-user-add-transaction";
 
 const TransactionsPage = async () => {
   const { userId } = await auth();
@@ -12,11 +13,13 @@ const TransactionsPage = async () => {
 
   const transactions = await db.transaction.findMany({ where: { userId } });
 
+  const userCanAddTransaction = await canUserAddTransaction();
+
   return (
     <main className="container space-y-6 sm:px-4">
       <div className="flex w-full items-center justify-between pt-6">
         <h1 className="text-2xl font-bold">Transações</h1>
-        <AddTransactionButton />
+        <AddTransactionButton userCanAddTransaction={userCanAddTransaction} />
       </div>
       <DataTable
         columns={transactionColumns}

@@ -9,6 +9,7 @@ interface SummaryCardProps {
   amount: number;
   size?: "sm" | "lg";
   translucid?: boolean;
+  userCanAddTransaction?: boolean;
 }
 
 const SummaryCard = ({
@@ -18,6 +19,7 @@ const SummaryCard = ({
   size = "sm",
   iconBg = "#0F0E11",
   translucid = false,
+  userCanAddTransaction,
 }: SummaryCardProps) => {
   const titleClass = {
     sm: "text-muted-foreground",
@@ -42,7 +44,9 @@ const SummaryCard = ({
         </div>
         {size === "lg" && (
           <span className="sm:hidden">
-            <AddTransactionButton />
+            <AddTransactionButton
+              userCanAddTransaction={userCanAddTransaction}
+            />
           </span>
         )}
       </CardHeader>
@@ -56,7 +60,9 @@ const SummaryCard = ({
         </p>
         {size === "lg" && (
           <span className="hidden sm:block">
-            <AddTransactionButton />
+            <AddTransactionButton
+              userCanAddTransaction={userCanAddTransaction}
+            />
           </span>
         )}
       </CardContent>
