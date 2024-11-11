@@ -1,12 +1,12 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import SummaryCards from "./components/summary-cards";
-import TimeSelect from "./components/time-select";
+import SummaryCards from "./_components/summary-cards";
+import TimeSelect from "./_components/time-select";
 import { isMatch } from "date-fns";
 import { getDashboard } from "../_data/get-dashboard";
-import TransactionsPieChart from "./components/transactions-pie-chart";
-import ExpensesPerCategory from "./components/expenses-per-category";
-import LastTransactions from "./components/last-transactions";
+import TransactionsPieChart from "./_components/transactions-pie-chart";
+import ExpensesPerCategory from "./_components/expenses-per-category";
+import LastTransactions from "./_components/last-transactions";
 
 interface HomePageProps {
   searchParams: {
