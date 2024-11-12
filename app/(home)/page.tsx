@@ -9,6 +9,7 @@ import ExpensesPerCategory from "./_components/expenses-per-category";
 import LastTransactions from "./_components/last-transactions";
 import { canUserAddTransaction } from "../_data/can-user-add-transaction";
 import AiReportsButton from "./_components/ai-reports-button";
+import { getUser } from "../_data/get-user";
 
 interface HomePageProps {
   searchParams: {
@@ -33,12 +34,17 @@ const HomePage = async ({ searchParams: { month } }: HomePageProps) => {
 
   const userCanAddTransaction = await canUserAddTransaction();
 
+  const user = await getUser();
+
   return (
     <main className="container space-y-6 py-6 sm:px-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Dashboard</h1>
         <div className="flex items-center gap-3">
-          <AiReportsButton month={month} />
+          <AiReportsButton
+            month={month}
+            isPremiumPlan={user?.publicMetadata?.subscriptionPlan === "premium"}
+          />
           <TimeSelect />
         </div>
       </div>
