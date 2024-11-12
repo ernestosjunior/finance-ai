@@ -16,8 +16,8 @@ const TransactionsPage = async () => {
   const userCanAddTransaction = await canUserAddTransaction();
 
   return (
-    <main className="container space-y-6 sm:px-4">
-      <div className="flex w-full items-center justify-between pt-6">
+    <main className="container space-y-6 py-6 sm:px-4">
+      <div className="flex w-full items-center justify-between">
         <h1 className="text-2xl font-bold">Transações</h1>
         <AddTransactionButton userCanAddTransaction={userCanAddTransaction} />
       </div>

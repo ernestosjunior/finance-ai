@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import Header from "./_components/header";
 import AppProgressBar from "./_components/app-progress-bar";
+import { Toaster } from "./_components/ui/sonner";
 
 const mulish = Mulish({
   subsets: ["latin-ext"],
@@ -31,6 +32,7 @@ export default function RootLayout({
           <AppProgressBar />
           <Header />
           {children}
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>
